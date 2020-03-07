@@ -1,7 +1,11 @@
 const inquirer = require("inquirer");
 
 
+function addARR() {
 
+    const lowerArr = ["a-z"];
+    console.log(lowerArr);
+}
 
 function createPassword() {
     return inquirer
@@ -15,10 +19,24 @@ function createPassword() {
                 type: "checkbox",
                 name: "characters",
                 message: "Which character types would you like in your password",
-                choices: ["UPPERCASE", "lowercase", "numbers", "special characters"]
+                choices: ["UPPERCASE", "lowercase", "numbers", "special characters"],
+                
+                
             }
         ]).then(answers => {
             console.info('Answer:', answers);
+            console.log(answers.characters);
+            let chars = (JSON.stringify(answers.characters));
+            let five = 5;
+            console.log(chars);
+
+            if (five === 5) {
+                console.log("nice");
+                addARR(lowerArr)
+            } else {
+                console.log("dumb");
+            }
+            
         });
 
 }
