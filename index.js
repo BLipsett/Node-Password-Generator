@@ -18,15 +18,6 @@ function createPassword() {
                     }
                 }
             },
-
-            /*{
-
-                type: "checkbox",
-                name: "characters",
-                message: "Which character types would you like in your password",
-                choices: [{ name: "UPPERCASE", value: 1 }, { name: 'lowercase', value: 2 }, { name: "numbers", value: 3 }, { name: "special characters", value: 4 }]
-
-            },*/
             {
                 type: "confirm",
                 name: "upper",
@@ -51,31 +42,19 @@ function createPassword() {
 
         ]).then(answers => {
             console.info('Answer:', answers);
-            // console.log(answers.characters);
+            
             let passLength = (answers.passlength);
-            /* let upperSel = answers.characters[0];
-             let lowerSel = (JSON.stringify(answers.characters[1]));
-             let numberSel = (JSON.stringify(answers.characters[2]));
-             let specialSel = (JSON.stringify(answers.characters[3]));*/
-
-
-            //console.log(upperSel);
+           
             let selArr = [];
-            //let addSel = selArr.push(answers.characters);
-            // console.log(selArr);
-            //let ansArr = (JSON.stringify(answers.characters));
-
-
+            
             for (i = 0; i < passLength; i++) {
 
                 if (answers.upper === true) {
-                    //console.log("nice");
                     let upA = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
                     let item = upA[Math.floor(Math.random() * upA.length)]
                     let addA = selArr.push(item);
 
                 } if (answers.lower === true) {
-                    //console.log("dumb");
                     let lowA = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
                     let itemLow = lowA[Math.floor(Math.random() * lowA.length)]
                     let addU = selArr.push(itemLow);
@@ -96,19 +75,12 @@ function createPassword() {
                 }
             }
 
-            //console.log(selArr);
             let pass = selArr.join("");
             console.log(pass)
 
             let finalPass = pass.substring(0, passLength);
             console.log(finalPass)
-
-
-
-
-
         });
-
 }
 createPassword()
 
