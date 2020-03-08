@@ -1,14 +1,7 @@
 const inquirer = require("inquirer");
 
-
-function addARR() {
-
-    const lowerArr = ["a-z"];
-    console.log(lowerArr);
-}
-
 function createPassword() {
-    let five = "a-z";
+
     return inquirer
 
         .prompt([
@@ -59,43 +52,53 @@ function createPassword() {
 
 
             //console.log(upperSel);
-             let selArr = [];
-             //let addSel = selArr.push(answers.characters);
-             // console.log(selArr);
-             //let ansArr = (JSON.stringify(answers.characters));
- 
+            let selArr = [];
+            //let addSel = selArr.push(answers.characters);
+            // console.log(selArr);
+            //let ansArr = (JSON.stringify(answers.characters));
 
 
-            if (answers.upper === true) {
-                console.log("nice");
-                let upA = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-                let addA = selArr.push(upA);
+            for (i = 0; i < passLength; i++) {
 
-            } if (answers.lower === true) {
-                console.log("dumb");
-                let lowA = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-                let addU = selArr.push(lowA);
+                if (answers.upper === true) {
+                    //console.log("nice");
+                    let upA = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+                    let item = upA[Math.floor(Math.random() * upA.length)]
+                    let addA = selArr.push(item);
 
-            } if (answers.number === true) {
-                let numA = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
-                let addN = selArr.push(numA)
+                } if (answers.lower === true) {
+                    //console.log("dumb");
+                    let lowA = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+                    let itemLow = lowA[Math.floor(Math.random() * lowA.length)]
+                    let addU = selArr.push(itemLow);
 
-            } if (answers.special === true) {
-                let spA = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "="]
-                let addS = selArr.push(spA);
+                } if (answers.number === true) {
+                    let numA = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+                    let itemNum = numA[Math.floor(Math.random() * numA.length)]
+                    let addN = selArr.push(itemNum)
 
-            } else {
-                console.log("please make a selection")
+                } if (answers.special === true) {
+                    let spA = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "="]
+                    let itemSpec = spA[Math.floor(Math.random() * spA.length)]
+
+                    let addS = selArr.push(itemSpec);
+
+                } else {
+                    //console.log("please make a selection")
+                }
             }
 
-            console.log(selArr);
-            console.log(passLength);
-            let buildArr = (JSON.stringify(selArr));
-            console.log(buildArr)
+            //console.log(selArr);
+            let pass = selArr.join("");
+            console.log(pass)
+
+            let finalPass = pass.substring( 0, passLength );
+            console.log(finalPass)
+            
 
 
 
-        
+
         });
 
 }
