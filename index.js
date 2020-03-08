@@ -8,7 +8,15 @@ function createPassword() {
             {
                 type: "number",
                 name: "passlength",
-                message: "How many characters would you like in your password?"
+                message: "How many characters would you like in your password?",
+                validate: function (value) {
+                    if (value < 20 && value > 8) {
+
+                        return true;
+                    } else {
+                        return 'Please enter a number between 8 and 20';
+                    }
+                }
             },
 
             /*{
@@ -83,8 +91,8 @@ function createPassword() {
 
                     let addS = selArr.push(itemSpec);
 
-                } else {
-                    //console.log("please make a selection")
+                } else if (answers === false) {
+                    console.log("User must select at least one type of character")
                 }
             }
 
@@ -92,9 +100,9 @@ function createPassword() {
             let pass = selArr.join("");
             console.log(pass)
 
-            let finalPass = pass.substring( 0, passLength );
+            let finalPass = pass.substring(0, passLength);
             console.log(finalPass)
-            
+
 
 
 
