@@ -10,7 +10,7 @@ function createPassword() {
                 name: "passlength",
                 message: "How many characters would you like in your password?",
                 validate: function (value) {
-                    if (value < 20 && value > 8) {
+                    if (value < 21 && value > 7) {
 
                         return true;
                     } else {
@@ -41,12 +41,12 @@ function createPassword() {
 
 
         ]).then(answers => {
-            console.info('Answer:', answers);
-            
+
+
             let passLength = (answers.passlength);
-           
+
             let selArr = [];
-            
+
             for (i = 0; i < passLength; i++) {
 
                 if (answers.upper === true) {
@@ -77,8 +77,43 @@ function createPassword() {
 
             let pass = selArr.join("");
             let finalPass = pass.substring(0, passLength);
-            console.log(finalPass)
+
+
+            console.log(`Your new password is ${finalPass}`)
+
         });
 }
-createPassword()
+
+function runPass() {
+
+    return inquirer
+
+        .prompt([
+            {
+                type: "confirm",
+                name: "again",
+                message: "Would you like a different password?"
+            }
+        ]).then(answers => {
+            if (answers === true) {
+                createPassword()
+            } else {
+                console.log("Thank you for using the password generator")
+            }
+        })
+}
+
+async function init() {
+    try {
+        await createPassword();
+
+        await runPass()
+
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
+init()
 
