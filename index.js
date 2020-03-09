@@ -21,7 +21,7 @@ function createPassword() {
             {
                 type: "confirm",
                 name: "upper",
-                message: "Would you like to add uppercase charasters?"
+                message: "Would you like to add uppercase characters?"
             },
             {
                 type: "confirm",
