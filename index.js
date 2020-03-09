@@ -76,8 +76,6 @@ function createPassword() {
             }
 
             let pass = selArr.join("");
-            console.log(pass)
-
             let finalPass = pass.substring(0, passLength);
             console.log(finalPass)
         });
